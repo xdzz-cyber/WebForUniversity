@@ -1,0 +1,78 @@
+﻿@model Domain.ViewModels.IncidentViewModel
+
+@{
+  var actionName = (string) ViewData["isRest"]! == "1" ? "AddIncidentAction" : "AddIncidentActionViaJsonRpc";
+}
+
+<div class="flex items-center justify-center p-12 min-h-screen">
+  <div class="mx-auto w-full max-w-[550px]">
+    <form asp-controller="Home" asp-action="@actionName" method="POST" enctype="multipart/form-data">
+      <div class="-mx-3 flex flex-wrap">
+        <div class="w-full px-3 sm:w-1/2">
+          <div class="mb-5">
+            <label for="Latitude" class="mb-3 block text-base font-medium text-[#07074D]">
+              Latitude
+            </label>
+            <input
+              asp-for="Latitude"
+              id="Latitude"
+              placeholder="Latitude"
+              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+            />
+            <span asp-validation-for="Latitude"></span>
+          </div>
+        </div>
+        <div class="w-full px-3 sm:w-1/2">
+          <div class="mb-5">
+            <label for="Longitude" class="mb-3 block text-base font-medium text-[#07074D]">
+              Longitude
+            </label>
+            <input
+              asp-for="Longitude"
+              id="Longitude"
+              placeholder="Longitude"
+              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+            />
+            <span asp-validation-for="Longitude"></span>
+          </div>
+        </div>
+      </div>
+      <div class="mb-5">
+        <label for="Commentary" class="mb-3 block text-base font-medium text-[#07074D]">
+          Commentary
+        </label>
+        <textarea
+          asp-for="Commentary"
+          id="Commentary"
+          class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
+      </textarea>
+        <span asp-validation-for="Commentary"></span>
+      </div>
+
+      <div class="-mx-3 flex flex-wrap">
+        <div class="w-full px-3 sm:w-full">
+          <div class="mb-5">
+            <label for="Photo" class="mb-3 block text-base font-medium text-[#07074D]">
+              Photo
+            </label>
+            <input
+              asp-for="PhotoUri"
+              id="Photo"
+              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+            />
+            <span asp-validation-for="PhotoUri"></span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button
+          class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+    <div asp-validation-summary="All"></div>
+  </div>
+</div>
